@@ -1,0 +1,14 @@
+.countLove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.count-item {
+  display: grid;
+  text-align: center;
+  gap: 50px;
+  margin-bottom: 500px;
+}
+

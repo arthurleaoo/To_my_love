@@ -1,29 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialised;
-  font-family: "Inter", sans-serif;
-  color: #fff;
-}
-
-html {
-  font-size: 62.5%;
-  background-color: #000;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-.container {
-  margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
-}
+@import "global.css";
+@import "gallery.css";
+@import "sec-love.css";
+@import "count.css";
