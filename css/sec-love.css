@@ -1,0 +1,22 @@
+.sec-love {
+  text-align: center;
+  margin-left: 1.4rem;
+  margin-right: 1.4rem;
+}
+
+.sec-love h1 {
+  font-style: italic;
+  font-size: 4rem;
+  color: rgb(255, 43, 43);
+  margin-bottom: 1rem;
+}
+
+.sec-love p {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.sec-love h1,
+p {
+  font-family: "Lora";
+}
