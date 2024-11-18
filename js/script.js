@@ -1,4 +1,4 @@
 import Slide from "./slide.js";
 
-const slide = new Slide("slides-item", ".slide-container");
-slide.init();
+const slides = new Slide(".slide-item", ".slides-all");
+slides.init();
