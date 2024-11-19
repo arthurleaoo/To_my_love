@@ -16,6 +16,7 @@ export default class Slide {
     this.dist = { finalPosition: 0, startX: 0, movement: 0 };
 
     this.activeClass = "active";
+    this.changeEvent = new Event("changeEvent");
   }
 
   // suavização da transição dos slides da função "changeSlideOnEnd()":
@@ -93,6 +94,7 @@ export default class Slide {
     this.dist.finalPosition = activeSlide.position;
 
     this.changeActiveClass();
+    this.wrapper.dispatchEvent(this.changeEvent);
   }
 
   // Ao index atual (slide atual), adiciona uma classe via CSS. Classe para estilizar.
@@ -127,7 +129,13 @@ export default class Slide {
     this.onStart = this.onStart.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onEnd = this.onEnd.bind(this);
+
+    // Resize com debounce
     this.onResize = debounce(this.onResize.bind(this), 250);
+
+    // Control Events
+    this.eventControl = this.eventControl.bind(this);
+    this.activeControlItem = this.activeControlItem.bind(this);
   }
 
   init() {
@@ -137,7 +145,43 @@ export default class Slide {
     this.slidesConfig();
     this.changeSlide(0);
     this.addResizeEvent();
-
     return this;
+  }
+}
+
+export class SlideNav extends Slide {
+  createControl() {
+    const control = document.createElement("ul");
+    control.dataset.control = "slide";
+
+    this.slidesArray.forEach((item, index) => {
+      control.innerHTML += `<li><a href="#slide${index + 1}">${index}</a></li>`;
+    });
+    this.wrapper.appendChild(control);
+    return control;
+  }
+
+  eventControl(item, index) {
+    item.addEventListener(
+      "touchstart",
+      (event) => {
+        event.preventDefault();
+        this.changeSlide(index);
+      },
+      { passive: false }
+    );
+    this.wrapper.addEventListener("changeEvent", this.activeControlItem);
+  }
+
+  activeControlItem() {
+    this.controlArray.forEach((item) => item.classList.remove(this.activeClass));
+    this.controlArray[this.index.active].classList.add(this.activeClass);
+  }
+
+  addControl() {
+    this.control = this.createControl();
+    this.controlArray = [...this.control.children];
+    this.activeControlItem();
+    this.controlArray.forEach((item, index) => this.eventControl(item, index));
   }
 }
