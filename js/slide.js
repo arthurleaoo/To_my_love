@@ -152,7 +152,7 @@ export default class Slide {
     this.slidesConfig();
     this.changeSlide(0);
     this.addResizeEvent();
-    this.autoplay(2500);
+    // this.autoplay(2500);
     return this;
   }
 }
