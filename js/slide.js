@@ -19,9 +19,16 @@ export default class Slide {
     this.changeEvent = new Event("changeEvent");
   }
 
-  // suavização da transição dos slides da função "changeSlideOnEnd()":
+  // suavização da transição dos slides da função "changeSlideOnEnd() e ademais":
   transition(active) {
-    this.slide.style.transition = active ? "transform .4s" : "";
+    this.slide.style.transition = active ? "transform 0.7s ease" : "";
+  }
+
+  autoplay(delay) {
+    this.autoPlayInterval = setInterval(() => {
+      this.activeNextSlide();
+    }, delay);
+    this.transition(true);
   }
 
   moveSlide(distanceX) {
@@ -37,7 +44,7 @@ export default class Slide {
   onStart(event) {
     this.dist.startX = event.changedTouches[0].clientX;
     this.wrapper.addEventListener("touchmove", this.onMove, { passive: false });
-    this.transition(false);
+    this.transition(true);
   }
 
   onMove(event) {
@@ -48,13 +55,12 @@ export default class Slide {
   onEnd(event) {
     this.wrapper.removeEventListener("touchmove", this.onMove);
     this.dist.finalPosition = this.dist.movePosition;
-    this.transition(true);
     this.changeSlideOnEnd();
   }
 
   changeSlideOnEnd() {
-    if (this.dist.movement > 90 && this.index.next !== undefined) this.activeNextSlide();
-    else if (this.dist.movement < -90 && this.index.prev !== undefined) this.activePrevSlide();
+    if (this.dist.movement > 120 && this.index.next !== undefined) this.activeNextSlide();
+    else if (this.dist.movement < -120 && this.index.prev !== undefined) this.activePrevSlide();
     else this.changeSlide(this.index.active);
   }
 
@@ -110,8 +116,9 @@ export default class Slide {
   }
 
   activeNextSlide() {
-    // se "this.index.next" for diferente de undefined, muda para o index no "this.index.next"
-    if (this.index.next !== undefined) this.changeSlide(this.index.next);
+    // se "this.index.next" for diferente de undefined, muda para o index no "this.index.next.
+    if (this.index.next === undefined) this.changeSlide(0);
+    else this.changeSlide(this.index.next); // Quando "this.index.next" for igual a undefined (por conta do autoplay), ele volta para o index 0 e recomeça a contagem.
   }
 
   onResize() {
@@ -145,6 +152,7 @@ export default class Slide {
     this.slidesConfig();
     this.changeSlide(0);
     this.addResizeEvent();
+    this.autoplay(2500);
     return this;
   }
 }
@@ -154,7 +162,7 @@ export class SlideNav extends Slide {
     const control = document.createElement("ul");
     control.dataset.control = "slide";
 
-    this.slidesArray.forEach((item, index) => {
+    this.slidesArray.forEach((index) => {
       control.innerHTML += `<li><a href="#slide${index + 1}">${index}</a></li>`;
     });
     this.wrapper.appendChild(control);
