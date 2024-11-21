@@ -18,15 +18,15 @@ img {
   max-width: 100%;
 }
 
-.container {
-  margin: 0 auto;
-  padding: 0 2rem;
-  width: 100%;
-}
-
 h1,
 h2,
 p,
 span {
   font-family: "Lora";
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
 }
