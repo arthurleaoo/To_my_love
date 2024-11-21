@@ -19,8 +19,10 @@ p {
 .text-effect {
   width: 250px;
   font-style: italic;
+  font-weight: 400;
   font-size: 3.75rem;
-  color: #ff0000;
+  text-decoration: underline;
+  color: #ff1717;
   position: absolute;
   top: -12%;
   left: 50%;
