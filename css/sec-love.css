@@ -12,7 +12,7 @@
 }
 
 .text-effect {
-  width: 250px;
+  width: 275px;
   font-style: italic;
   font-weight: 400;
   font-size: 3.75rem;
@@ -52,6 +52,8 @@
   transform: translateY(-50%);
 }
 
+/* Animações */
+
 @keyframes animated-heart {
   0% {
     opacity: 0;
@@ -64,5 +66,11 @@
   100% {
     opacity: 0;
     transform: translate(0, -1000%) rotate(45deg);
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
