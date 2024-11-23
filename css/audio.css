@@ -1,3 +1,61 @@
-.audio-player {
+#audio-player {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  background: #060505;
+  padding: 15px;
+  border-radius: 5px;
+  width: 300px;
+  margin: 50px auto 75px auto;
+}
+
+#volume-control {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: 25px;
+}
+
+#play-pause img,
+#rewind img,
+#forward img,
+#volume-control img {
+  filter: invert(1);
+}
+
+.rewind-btn,
+.play-btn,
+.forward-btn {
+  background: none;
+  border: none;
+}
+
+#play-pause {
+  padding: 4px 3px;
+  margin: 0;
+  border-radius: 3px;
+  background-color: #ff1717;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 5px;
+  background: #d0d0d0;
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #9f9a9a;
+}
+
+.teste {
+  margin-top: 500px;
   margin-bottom: 500px;
 }
