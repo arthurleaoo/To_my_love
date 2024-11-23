@@ -48,11 +48,12 @@ export default class Slide {
   }
 
   onMove(event) {
+    event.preventDefault();
     const finalPosition = this.updatePosition(event.changedTouches[0].clientX);
     this.moveSlide(finalPosition);
   }
 
-  onEnd(event) {
+  onEnd() {
     this.wrapper.removeEventListener("touchmove", this.onMove);
     this.dist.finalPosition = this.dist.movePosition;
     this.changeSlideOnEnd();
@@ -66,7 +67,7 @@ export default class Slide {
 
   addSlideEvents() {
     this.wrapper.addEventListener("touchstart", this.onStart, { passive: false });
-    this.wrapper.addEventListener("touchend", this.onEnd, { passive: false });
+    this.wrapper.addEventListener("touchend", this.onEnd, { passive: true });
   }
 
   // Configurações dos Slides
@@ -152,7 +153,7 @@ export default class Slide {
     this.slidesConfig();
     this.changeSlide(0);
     this.addResizeEvent();
-    // this.autoplay(2500);
+    this.autoplay(2500);
     return this;
   }
 }
@@ -170,14 +171,7 @@ export class SlideNav extends Slide {
   }
 
   eventControl(item, index) {
-    item.addEventListener(
-      "touchstart",
-      (event) => {
-        event.preventDefault();
-        this.changeSlide(index);
-      },
-      { passive: false }
-    );
+    item.addEventListener("touchstart", () => this.changeSlide(index), { passive: false });
     this.wrapper.addEventListener("changeEvent", this.activeControlItem);
   }
 
