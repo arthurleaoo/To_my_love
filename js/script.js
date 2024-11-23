@@ -1,6 +1,7 @@
 import { SlideNav } from "./slide.js";
 import { typeText, heartAnimation } from "./heartAnimation.js";
 import { dateCount } from "./countDays.js";
+import { audioPlayer } from "./audioPlayer.js";
 
 // Slides de Imagens
 const slides = new SlideNav(".slide-item", ".slides-all");
@@ -19,3 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicia o efeito de digitação
   typeText(h1, text, typingSpeed, heartAnimation);
 });
+
+//  audioPlayer
+audioPlayer();
