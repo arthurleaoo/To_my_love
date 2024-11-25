@@ -24,10 +24,6 @@
   border-radius: 0.4rem;
 }
 
-/* Slide com a classe "active" */
-.slide-item li.active {
-}
-
 [data-control="slide"] {
   display: flex;
   justify-content: center;

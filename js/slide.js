@@ -37,7 +37,7 @@ export default class Slide {
   }
 
   updatePosition(clientX) {
-    this.dist.movement = (this.dist.startX - clientX) * 1.4;
+    this.dist.movement = (this.dist.startX - clientX) * 1.3; // serve para aumentar a velocidade de movimento do slide (ao touch)
     return this.dist.finalPosition - this.dist.movement;
   }
 
@@ -68,13 +68,15 @@ export default class Slide {
   addSlideEvents() {
     this.wrapper.addEventListener("touchstart", this.onStart, { passive: false });
     this.wrapper.addEventListener("touchend", this.onEnd, { passive: true });
+    window.addEventListener("load", () => this.onResize());
   }
 
   // Configurações dos Slides
 
   slidePosition(slide) {
     const margin = (this.wrapper.offsetWidth - slide.offsetWidth) / 2;
-    return -(slide.offsetLeft - margin);
+    const position = -(slide.offsetLeft - margin);
+    return position;
   }
 
   slidesConfig() {
@@ -99,7 +101,6 @@ export default class Slide {
     this.moveSlide(activeSlide.position);
     this.slidesIndexNav(index);
     this.dist.finalPosition = activeSlide.position;
-
     this.changeActiveClass();
     this.wrapper.dispatchEvent(this.changeEvent);
   }
@@ -107,7 +108,6 @@ export default class Slide {
   // Ao index atual (slide atual), adiciona uma classe via CSS. Classe para estilizar.
   changeActiveClass() {
     this.slidesArray.forEach((item) => item.element.classList.remove(this.activeClass));
-
     this.slidesArray[this.index.active].element.classList.add(this.activeClass);
   }
 
@@ -126,7 +126,7 @@ export default class Slide {
     setTimeout(() => {
       this.slidesConfig();
       this.changeSlide(this.index.active);
-    }, 900);
+    }, 0);
   }
 
   addResizeEvent() {
@@ -153,7 +153,7 @@ export default class Slide {
     this.slidesConfig();
     this.changeSlide(0);
     this.addResizeEvent();
-    this.autoplay(2500);
+    this.autoplay(3000);
     return this;
   }
 }
