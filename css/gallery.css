@@ -12,7 +12,7 @@
 .slide-item li {
   flex-shrink: 0;
   width: 80vw;
-  height: 55vh;
+  height: 47vh;
   max-width: 800px;
   margin: 50px 25px 0px 25px;
 }
@@ -28,7 +28,7 @@
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
-  margin-bottom: 6.5rem;
+  margin-bottom: 5.5rem;
 }
 
 [data-control="slide"] li a {
@@ -38,7 +38,7 @@
   margin: 5px;
   background-color: white;
   border-radius: 50%;
-  text-indent: -999px;
+  text-indent: -9999px;
 }
 
 [data-control="slide"] li.active a {
