@@ -31,11 +31,4 @@ export default function audioPlayer() {
   volume.addEventListener("input", () => {
     audio.volume = volume.value;
   });
-
-  // estilos ao clicar no play
-  audio.addEventListener("play", () => {
-    section.forEach((item) => {
-      item.classList.remove("hidden");
-    });
-  });
 }
