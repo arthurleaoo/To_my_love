@@ -2,7 +2,7 @@
 const dataDeInicio = new Date("2024-03-08T03:00:00Z");
 
 // Função para calcular a diferença entre datas
-export function dateCount() {
+export default function dateCount() {
   const agora = new Date();
   const horarioDeBrasilia = new Date(agora.getTime() - 3 * 60 * 60 * 1000); // faz a conversão para o horário de brásilia
   const diferença = horarioDeBrasilia - dataDeInicio;
@@ -22,5 +22,3 @@ export function dateCount() {
   document.querySelectorAll(".count-item h2")[4].textContent = segundos;
 }
 
-// Atualização do contador a cada segundo
-setInterval(dateCount, 1000);

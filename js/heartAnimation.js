@@ -32,6 +32,7 @@ const randomNum = (x, y) => {
   return Math.floor(Math.random() * (y - x + 1)) + x;
 };
 
+// Animação dos corações
 export const heartAnimation = () => {
   const effectText = document.querySelector(".text-effect");
   const heartCount = (effectText.offsetWidth / 50) * 5;

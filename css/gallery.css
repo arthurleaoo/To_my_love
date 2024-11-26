@@ -33,8 +33,8 @@
 
 [data-control="slide"] li a {
   display: block;
-  width: 15px;
-  height: 12px;
+  width: 12px;
+  height: 10px;
   margin: 5px;
   background-color: white;
   border-radius: 50%;

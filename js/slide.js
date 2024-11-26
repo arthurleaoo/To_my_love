@@ -146,19 +146,6 @@ export default class Slide {
     this.activeControlItem = this.activeControlItem.bind(this);
   }
 
-  init() {
-    this.bindEvents();
-    this.transition(false);
-    this.addSlideEvents();
-    this.slidesConfig();
-    this.changeSlide(0);
-    this.addResizeEvent();
-    this.autoplay(3000);
-    return this;
-  }
-}
-
-export class SlideNav extends Slide {
   createControl() {
     const control = document.createElement("ul");
     control.dataset.control = "slide";
@@ -185,5 +172,17 @@ export class SlideNav extends Slide {
     this.controlArray = [...this.control.children];
     this.activeControlItem();
     this.controlArray.forEach((item, index) => this.eventControl(item, index));
+  }
+
+  init() {
+    this.bindEvents();
+    this.transition(false);
+    this.addSlideEvents();
+    this.slidesConfig();
+    this.changeSlide(0);
+    this.addResizeEvent();
+    this.addControl();
+    this.autoplay(3000);
+    return this;
   }
 }

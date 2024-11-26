@@ -5,7 +5,7 @@ const rewind = document.getElementById("rewind");
 const forward = document.getElementById("forward");
 const volume = document.getElementById("volume");
 
-export const audioPlayer = () => {
+export default function audioPlayer() {
   // play/pause
   playPause.addEventListener("click", () => {
     if (audio.paused) {
@@ -31,4 +31,11 @@ export const audioPlayer = () => {
   volume.addEventListener("input", () => {
     audio.volume = volume.value;
   });
-};
+
+  // estilos ao clicar no play
+  audio.addEventListener("play", () => {
+    section.forEach((item) => {
+      item.classList.remove("hidden");
+    });
+  });
+}
