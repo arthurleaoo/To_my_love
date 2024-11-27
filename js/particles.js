@@ -8,11 +8,11 @@ canvasStars.height = document.documentElement.scrollHeight;
 const stars = [];
 
 export function createStars() {
-  for (let i = 0; i < 500; i++) {
+  for (let i = 0; i < 550; i++) {
     stars.push({
       x: Math.random() * canvasStars.width,
       y: Math.random() * canvasStars.height,
-      radius: Math.random() * 2,
+      radius: Math.random() * 1.4,
       alpha: Math.random(),
       dx: Math.random() * 0.5 - 0.25,
     });
