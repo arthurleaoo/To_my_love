@@ -11,8 +11,8 @@
 /* "slide" */
 .slide-item li {
   flex-shrink: 0;
-  width: 80vw;
-  height: 47vh;
+  width: 70vw;
+  height: 43vh;
   max-width: 800px;
   margin: 50px 25px 0px 25px;
 }
