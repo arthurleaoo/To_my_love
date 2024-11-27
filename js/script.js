@@ -1,8 +1,8 @@
 import { createStars, drawStars } from "./particles.js";
+import audioPlayer from "./audioPlayer.js";
 import Slide from "./slide.js";
 import { typeText, heartAnimation } from "./heartAnimation.js";
 import dateCount from "./countDays.js";
-import audioPlayer from "./audioPlayer.js";
 
 // particles
 createStars();

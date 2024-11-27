@@ -33,4 +33,6 @@ span {
 
 #particles-stars {
   position: fixed;
+  z-index: -999;
+  pointer-events: none;
 }
