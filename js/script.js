@@ -18,7 +18,7 @@ slides.init();
 // Animação de "typing" ao h1 principal
 document.addEventListener("DOMContentLoaded", () => {
   const h1 = document.querySelector(".text-effect");
-  const text = "Ruan & Alyne.";
+  const text = "Arthur & Clara";
   const typingSpeed = 300; // Velocidade de digitação (ms por letra)
 
   // Inicia o efeito de digitação
